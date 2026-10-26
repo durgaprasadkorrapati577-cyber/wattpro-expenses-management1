@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink — Deep Solar Navy */
+  --color-ink-950: #0a0f18;
+  --color-ink-900: #0e1522;
+  --color-ink-850: #121b2c;
+  --color-ink-800: #1a2436;
+  --color-ink-700: #252f44;
+  --color-ink-600: #313c55;
+  --color-ink-500: #4b5875;
+  --color-ink-400: #6b7a99;
+
+  /* Volt — Solar Orange */
+  --color-volt-100: #fff0e6;
+  --color-volt-200: #ffd1b3;
+  --color-volt-300: #ffb380;
+  --color-volt-400: #ff944d;
+  --color-volt-500: #ff6b00;
+  --color-volt-600: #e66000;
+  --color-volt-700: #b84d00;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+
+  --shadow-glow: 0 0 40px -8px rgba(255, 107, 0, 0.35);
+  --shadow-card: 0 20px 50px -20px rgba(0, 0, 0, 0.7);
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-marquee: marquee 32s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html,
+body {
+  background: var(--color-ink-950);
+  color: #f4f4f5;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-volt-500);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-600);
+  border-radius: 8px;
+  border: 2px solid var(--color-ink-950);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-500);
+}
+
+/* Number inputs — hide spinners */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Date input dark scheme */
+input[type="date"],
+input[type="month"] {
+  color-scheme: dark;
+}
+
+/* Reusable surfaces */
+.glass {
+  background: rgba(14, 14, 18, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-surface {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.015)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.25rem;
+}
+
+.grid-lines {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+.text-glow {
+  text-shadow: 0 0 24px rgba(255, 107, 0, 0.45);
+}
+
+.volt-ring:focus-visible {
+  outline: 2px solid var(--color-volt-500);
+  outline-offset: 2px;
+}
